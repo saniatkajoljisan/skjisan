@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>It's me Saniat Kajol Jisan</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* ======== RESET & THEME ======== */
+    :root {
+      --accent1: #00C2FF;
+      --accent2: #9B59B6;
+      --glass-bg: rgba(255, 255, 255, 0.04);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --glass-blur: 10px;
+      --txt: #e8ecf1;
+      --muted: #a9b0bd;
+      --neon-color: #9B59B6; 
+      --glow-spread: 15px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #0a0c14;
+      color: var(--txt);
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    h1, h2, h3 {
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    section {
+      padding: 80px 6vw;
+      position: relative;
+      overflow: hidden;
+    }
+
+    button {
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    /* ======== LIQUID BACKGROUND ======== */
+    #liquid-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(155, 89, 182, 0.25), transparent 70%),
+        radial-gradient(circle at 80% 70%, rgba(0, 194, 255, 0.2), transparent 70%),
+        #0a0c14;
+      animation: bgShift 18s linear infinite;
+    }
+
+    @keyframes bgShift {
+      0% { background-position: 0 0, 0 0; }
+      100% { background-position: 2000px 0, -2000px 0; }
+    }
+
+    /* ======== LIQUID GLASS EFFECT ======== */
+    .glasss {
+      backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5),
+                  inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+
+    /* ======== HEADER ======== */
+    header {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(90%, 1100px);
+      padding: 14px 26px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 20px;
+      z-index: 10;
+      transition: all .4s ease;
+    }
+
+    header.scrolled {
+      backdrop-filter: blur(10px) brightness(1.1);
+      padding: 10px 26px;
+    }
+
+    nav a {
+      margin: 0 12px;
+      color: var(--muted);
+      font-weight: 600;
+      transition: color .3s;
+    }
+
+    nav a:hover {
+      color: var(--accent1);
+    }
+
+    .logo {
+      font-weight: 900;
+      font-size: 22px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    /* ======== HERO ======== */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 40px;
+      min-height: 100vh;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .hero-text h1 {
+      font-size: clamp(40px, 6vw, 72px);
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: textGradient 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes textGradient {
+      to { filter: hue-rotate(360deg); }
+    }
+
+    .hero-text p {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .hero-btn {
+      margin-top: 30px;
+      display: inline-block;
+      padding: 14px 28px;
+      font-weight: 700;
+      border-radius: 14px;
+      font-size: 16px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color: #fff;
+      border: none;
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .hero-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.3);
+      mix-blend-mode: overlay;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 10px 20px rgba(0, 194, 255, 0.4);
+    }
+
+    .hero-btn:hover::after {
+      opacity: 1;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-visual .glass {
+        aspect-ratio: 4 / 5; 
+        width: 80%;
+        max-width: 400px; 
+        margin: 0 auto; 
+        backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+        background: var(--glass-bg); 
+        border: 1px solid var(--neon-color); 
+        border-radius: 20px; 
+        box-shadow:
+            0 0 10px rgba(0, 0, 0, 0.4),
+            inset 0 0 calc(var(--glow-spread) * 2) var(--neon-color), 
+            inset 0 0 calc(var(--glow-spread) * 4) rgba(0, 255, 255, 0.5); 
+        padding: 0; 
+        transform: rotate(-5deg);
+        opacity: 0.8; 
+        transition: transform 0.6s ease-in-out, box-shadow 0.6s ease-in-out, border-color 0.6s ease-in-out; 
+        overflow: hidden; 
+    }
+
+    .hero-visual .glass:hover {
+        transform: rotate(5deg) scale(1.05);
+        box-shadow: 
+            0 0 40px rgba(0, 0, 0, 0.9),
+            inset 0 0 calc(var(--glow-spread) * 4) var(--neon-color), 
+            inset 0 0 calc(var(--glow-spread) * 8) rgba(0, 255, 255, 0.8),
+            inset 0 0 calc(var(--glow-spread) * 12) rgba(0, 255, 255, 0.3); 
+            
+        border-color: var(--neon-color); 
+    }
+
+    .rotated-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; 
+        border-radius: 20px; 
+        opacity: 0.8;
+        padding: 10px; 
+        box-sizing: border-box; 
+        background-color: transparent;
+    }
+
+    /* ======== SKILLS ======== */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .skill {
+      padding: 14px 20px;
+      font-weight: 600;
+      font-size: 17px;
+      border-radius: 12px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      transition: transform .5s cubic-bezier(.1, 1, .2, 1), box-shadow .5s;
+    }
+
+    .skill:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 8px 30px rgba(0, 229, 255, 0.2);
+    }
+
+    /* ======== PROJECTS ======== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .project {
+      padding: 25px;
+      border-radius: 24px;
+      transition: transform .5s cubic-bezier(.1, 1, .2, 1), box-shadow .5s;
+    }
+
+    .project:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 12px 40px rgba(0, 229, 255, 0.3);
+    }
+
+    .project h3 {
+      margin-bottom: 10px;
+    }
+
+    .project p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* ======== CONTACT ======== */
+    .contact-box {
+      max-width: 700px;
+      margin: auto;
+      text-align: center;
+      padding: 50px 40px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .socials {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .socials a {
+      font-size: 32px;
+      color: var(--muted);
+      transition: color .3s, transform .3s;
+    }
+
+    .socials a:hover {
+      color: var(--accent1);
+      transform: scale(1.2) rotate(5deg);
+    }
+
+    /* ======== REVEAL ANIMATION ======== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: all 1s cubic-bezier(.1, 1, .2, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .icon-label-container {
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        text-decoration: none; 
+        color: inherit; 
+    }
+
+    .icon-label {
+        font-size: 12px; 
+        font-weight: 500;
+        margin-top: 5px; 
+        color: #666; 
+    }
+    
+    .icon-label-container i {
+        font-size: 24px; 
+        margin-bottom: 5px;
+    }
+
+    .project ul {
+        padding: 0 10px;
+        margin-bottom: 40px;
+    }
+
+    .project li {
+        margin-bottom: 10px;
+        line-height: 1.5;
+        font-size: 16px;
+        color: rgb(182, 179, 179);
+    }
+
+    .tools {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .tools a {
+      font-size: 32px;
+      color: var(--muted);
+      transition: color .3s, transform .3s;
+    }
+
+    .tools a:hover {
+      color: var(--accent1);
+      transform: scale(1.4);
+    }
+
+    .tools a:hover .icon-label {
+      color: var(--accent1); 
+    }
+  </style>
+</head>
+
+<body>
+  <div id="liquid-bg"></div>
+
+  <!-- HEADER -->
+  <header class="glasss">
+    <div class="logo">SK</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="about">
+    <div class="hero-text">
+      <h1 class="reveal" data-stagger="0">Saniat Kajol Jisan</h1>
+      <p class="reveal" data-stagger="1">From Strategy to Scale: I Build, I Optimize, and I Automate the Digital Future.</p>
+      <a href="#projects-for-mess" class="hero-btn reveal" data-stagger="2">Project For Mess</a>
+    </div>
+
+    <div class="hero-visual reveal" data-stagger="3">
+      <div class="glass">
+          <img src="https://raw.githubusercontent.com/saniatkajoljisan/skjisan/main/w.jpg" alt="Profile Picture" class="rotated-image">
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2 class="revea" style="text-align:center;font-size:40px;" data-aos="fade-right" data-aos-duration="1000" data-aos-offset="100">Expertise</h2>
+    <div class="skills">
+      <div class="skill reveal" data-stagger="0">Marketing Strategist</div>
+      <div class="skill reveal" data-stagger="1">SEO Analyst</div>
+      <div class="skill reveal" data-stagger="2">Full-Stack Web Developer</div>
+      <div class="skill reveal" data-stagger="3">AI Consultant</div>
+      <div class="skill reveal" data-stagger="4">Cloud Computing Specialist</div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 class="revea" style="text-align:center;font-size:40px;" data-aos="fade-left" data-aos-duration="1000" data-aos-offset="100">Projects <span style="font-size: 16px; font-weight: normal; color: #6c757d;">(Few)</span></h2>
+    <div class="projects-grid">
+      <div class="project glasss reveal" data-stagger="0">
+        <h3>Pinnacle E-Commerce Platform</h3>
+        <p>Full-Stack e-commerce solution built with MERN. Features real-time inventory and cloud deployment (AWS/GCP) for scalable performance.</p>
+      </div>
+      <div class="project glasss reveal" data-stagger="1">
+        <h3>GrowthPilot SEO Strategy</h3>
+        <p>Comprehensive Technical SEO and content strategy resulting in 35% organic traffic growth through cluster mapping and on-page optimization.</p>
+      </div>
+      <div class="project glasss reveal" data-stagger="2">
+        <h3>SentimentSnap API</h3>
+        <p>Custom AI/ML model developed to analyze brand sentiment. Packaged as a scalable RESTful API for real-time application integration.</p>
+      </div>
+      <div class="project glasss reveal" data-stagger="3">
+        <h3>Global Data Stream Pipeline</h3>
+        <p>Designed a high-throughput Cloud-based data pipeline (AWS/GCP) for ingesting and processing terabytes of unstructured data with low latency.</p>
+      </div>
+      <div class="project glasss reveal" data-stagger="4">
+        <h3>Conversion Catalyst Funnel</h3>
+        <p>Marketing project focused on Conversion Rate Optimization (CRO). A/B testing and checkout redesign increased lead-to-customer conversion by 18%.</p>
+      </div>
+      <div class="project glasss reveal" data-stagger="5">
+        <h3>Hyper-Targeted Ad-Copy Engine</h3>
+        <p>Developed and implemented advanced prompt engineering techniques to generate contextually relevant, highly personalized ad copy at scale, significantly reducing CPA for client campaigns.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects For Mess -->
+  <section id="projects-for-mess">
+    <h2 class="revea" style="text-align:center;font-size:40px;" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="100">Projects For Mess <span style="font-size: 16px; font-weight: normal; color: #6c757d;">(Two)</span></h2>
+    <div class="projects-grid">
+      <div class="project glasss reveal" data-stagger="0">
+        <h3>Meal Management Tools:</h3>
+        <ul>
+            <li>
+                <strong>Meal Calculator:</strong> Easily calculate final meal expenses. Input required details like Name, Deposit (TK), Total Meals, Bazar Cost, and Additional Costs.
+            </li><br>
+            <li>
+                <strong>Meal Register:</strong> Simple daily meal tracking. Input Name and Daily Meal count. Data is saved automatically for the entire month and resets at month-end.
+            </li>
+        </ul>
+        <div class="tools">
+          <a href="https://mealcalapp.github.io/for-all/" target="_blank" class="icon-label-container">
+            <i class="fa-solid fa-calculator fa-2x"></i>
+            <span class="icon-label">Meal Calculator</span>
+          </a>
+          <a href="https://mealcalapp.github.io/for-meal/" target="_blank" class="icon-label-container">
+            <i class="fa-solid fa-file-lines fa-2x"></i>
+            <span class="icon-label">Meal Register</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="100">
+    <div class="contact-box reveal">
+      <h2 style="font-size:36px;">Get In Touch <span style="font-size: 16px; font-weight: normal; color: #6c757d;">(Socials)</span></h2>
+      <p style="color:var(--muted);margin-top:10px;">
+        Let's Connect and Build the Future Together.
+      </p>
+      <div class="socials" data-aos="fade-left" data-aos-duration="1000" data-aos-offset="100">
+       <a href="https://www.facebook.com/officiall.sk" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+       <a href="https://www.instagram.com/official_jisu/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+       <a href="https://x.com/sk_jisan1" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+       <a href="https://www.threads.com/@official_jisu" target="_blank"><i class="fa-brands fa-threads"></i></a>
+       <a href="https://saniatkajoljisan.github.io/skjisan/" target="_blank"><i class="fa-brands fa-github"></i></a>
+    </div>
+  </section>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Reveal animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach((el) => {
+      const staggerValue = el.getAttribute('data-stagger');
+      if (staggerValue !== null) {
+        el.style.transitionDelay = `${staggerValue * 0.1}s`;
+      }
+      observer.observe(el);
+    });
+  </script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <div style="text-align:center; font-size:13px; color:#555;">
+    <span style="font-size:18px; vertical-align:middle;">&copy;</span>
+    <span style="color:#555; font-weight:bold; text-decoration:none; margin:0 1px; vertical-align:middle;">SK JISAN</span>
+    <span id="currentYear" style="vertical-align:middle;"></span>
+  </div>
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+    
+</body>
+</html>
