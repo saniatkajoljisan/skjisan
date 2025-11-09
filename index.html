@@ -16,7 +16,7 @@
     :root {
       --accent1: #00C2FF;
       --accent2: #9B59B6;
-      --glass-bg: rgba(255, 255, 255, 0.04);
+      --glass-bg: rgba(255, 255, 255, 0.03);
       --glass-border: rgba(255, 255, 255, 0.1);
       --glass-blur: 10px;
       --txt: #e8ecf1;
@@ -93,7 +93,7 @@
       left: 50%;
       transform: translateX(-50%);
       width: min(90%, 1100px);
-      padding: 14px 26px;
+      padding: 14px 25px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -108,7 +108,7 @@
     }
 
     nav a {
-      margin: 0 12px;
+      margin: 0 5px;
       color: var(--muted);
       font-weight: 600;
       transition: color .3s;
@@ -167,7 +167,7 @@
       font-weight: 700;
       border-radius: 14px;
       font-size: 16px;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      background: linear-gradient(30deg, var(--accent2), var(--accent1));
       color: #fff;
       border: none;
       position: relative;
@@ -257,12 +257,15 @@
       background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
       border: 1px solid rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(8px);
-      transition: transform .5s cubic-bezier(.1, 1, .2, 1), box-shadow .5s;
+      transition: all .3s cubic-bezier(.1, 1, .2, 1);
     }
 
     .skill:hover {
       transform: translateY(-4px) scale(1.03);
       box-shadow: 0 8px 30px rgba(0, 229, 255, 0.2);
+    }
+    .skill.reveal {
+      transition-delay: 0s !important; 
     }
 
     /* ======== PROJECTS ======== */
@@ -276,11 +279,11 @@
     .project {
       padding: 25px;
       border-radius: 24px;
-      transition: transform .5s cubic-bezier(.1, 1, .2, 1), box-shadow .5s;
+      transition: all .3s cubic-bezier(.1, 1, .2, 1);
     }
 
     .project:hover {
-      transform: translateY(-6px) scale(1.01);
+      transform: translateY(-10px) scale(1.02);
       box-shadow: 0 12px 40px rgba(0, 229, 255, 0.3);
     }
 
@@ -292,6 +295,9 @@
       color: var(--muted);
       font-size: 15px;
     }
+    .project.reveal {
+      transition-delay: 0s !important; 
+    }
 
     /* ======== CONTACT ======== */
     .contact-box {
@@ -300,7 +306,7 @@
       text-align: center;
       padding: 50px 40px;
       border-radius: 28px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01));
       border: 1px solid rgba(255,255,255,0.05);
     }
 
@@ -423,8 +429,8 @@
   <section id="skills">
     <h2 class="revea" style="text-align:center;font-size:40px;" data-aos="fade-right" data-aos-duration="1000" data-aos-offset="100">Expertise</h2>
     <div class="skills">
-      <div class="skill reveal" data-stagger="0">Marketing Strategist</div>
-      <div class="skill reveal" data-stagger="1">SEO Analyst</div>
+      <div class="skill reveal" data-stagger="0">SEO Analyst</div>
+      <div class="skill reveal" data-stagger="1">Marketing Strategist</div>
       <div class="skill reveal" data-stagger="2">Full-Stack Web Developer</div>
       <div class="skill reveal" data-stagger="3">AI Consultant</div>
       <div class="skill reveal" data-stagger="4">Cloud Computing Specialist</div>
@@ -458,6 +464,14 @@
       <div class="project glasss reveal" data-stagger="5">
         <h3>Hyper-Targeted Ad-Copy Engine</h3>
         <p>Developed and implemented advanced prompt engineering techniques to generate contextually relevant, highly personalized ad copy at scale, significantly reducing CPA for client campaigns.</p>
+      </div>
+      <div class="project glasss reveal" data-stagger="6">
+        <h3>AI-Powered Chatbot</h3>
+        <p>Developed an intelligent chatbot using GPT architecture to provide instant customer support and improve engagement metrics on client websites.</p>
+      </div>
+      <div class="project glasss reveal" data-stagger="7">
+        <h3>Real-Time Analytics Dashboard</h3>
+        <p>Built an interactive dashboard with real-time data visualization, integrating multiple APIs to monitor KPIs and business performance dynamically.</p>
       </div>
     </div>
   </section>
