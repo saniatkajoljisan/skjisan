@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,6 +117,19 @@
       color: var(--accent1);
     }
 
+    .nav-pill {
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(30deg, rgba(155, 89, 182, 0.9), rgba(0, 194, 255, 0.9));
+      box-shadow: 0 8px 24px rgba(0, 194, 255, 0.16);
+    }
+
+    .nav-pill:hover {
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
     .logo {
       font-weight: 900;
       font-size: 22px;
@@ -190,6 +204,32 @@
 
     .hero-btn:hover::after {
       opacity: 1;
+    }
+
+    .hero-actions {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-actions .hero-btn {
+      margin-top: 0;
+    }
+
+    .letter-btn {
+      background: linear-gradient(135deg, #ff4d6d, #ff8fab 48%, #00c2ff);
+      box-shadow: 0 10px 28px rgba(255, 77, 109, 0.28);
+    }
+
+    .letter-btn:hover {
+      box-shadow: 0 14px 34px rgba(255, 77, 109, 0.42);
+    }
+
+    @media (max-width: 900px) {
+      .hero-actions {
+        justify-content: center;
+      }
     }
 
     .hero-visual {
@@ -392,6 +432,11 @@
       color: var(--accent1); 
     }
 
+    .letter-tool:hover i {
+      color: #ff6b8a;
+      filter: drop-shadow(0 0 12px rgba(255, 107, 138, 0.38));
+    }
+
     .heros {
         min-height: 100vh;
         display: grid;
@@ -481,6 +526,29 @@
     }
 
     .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(5px) saturate(180%); -webkit-backdrop-filter: blur(5px) saturate(180%); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 32px; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s; } .glass-card:hover { border-color: rgba(255, 255, 255, 0.3); }
+
+    @media (max-width: 720px) {
+      header {
+        width: min(94%, 1100px);
+        padding: 12px 14px;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      nav a {
+        margin: 0;
+        font-size: 13px;
+      }
+
+      .nav-pill {
+        padding: 7px 10px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -500,7 +568,10 @@
     <div class="hero-text">
       <div class="sk-logos" id="hero-text">SANIAT<br>KAJOL JISAN</div>
       <div class="hero-subs" id="hero-sub">I Automate the Digital Future.</div><br>
-        <a href="#projects-for-mess" class="hero-btn reveal" data-stagger="2">Project For Mess</a>
+      <div class="hero-actions">
+        <a href="#send-anonymous-letter" class="hero-btn letter-btn reveal" data-stagger="2">Send Anonymous Letter</a>
+        <a href="#projects-for-mess" class="hero-btn reveal" data-stagger="3">Project For Mess</a>
+      </div>
     </div>
     <div class="hero-visual reveal" data-stagger="3">
       <div class="glass">
@@ -580,6 +651,30 @@
       <div class="project glasss reveal glass-card" data-stagger="7">
         <h3>Real-Time Analytics Dashboard</h3>
         <p>Built an interactive dashboard with real-time data visualization, integrating multiple APIs to monitor KPIs and business performance dynamically.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Send Anonymous Letter -->
+  <section id="send-anonymous-letter">
+    <h2 class="revea" style="text-align:center;font-size:40px;" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="100">Send Anonymous Letter <span style="font-size: 16px; font-weight: normal; color: #6c757d;">(Chithi)</span></h2>
+    <div class="projects-grid">
+      <div class="project glasss reveal" data-stagger="0">
+        <h3>Anonymous Letter:</h3>
+        <ul>
+            <li>
+                <strong>Send Letter:</strong> Share your message privately and beautifully without showing your identity.
+            </li><br>
+            <li>
+                <strong>Chithi Box:</strong> A lovely little space for honest words, soft feelings, and thoughtful notes.
+            </li>
+        </ul>
+        <div class="tools">
+          <a href="https://saniatkajoljisan.github.io/chithi/" target="_blank" class="icon-label-container letter-tool">
+            <i class="fa-solid fa-envelope-open-text fa-2x"></i>
+            <span class="icon-label">Send Letter</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
